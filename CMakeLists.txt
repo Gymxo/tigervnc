@@ -130,7 +130,7 @@ if(WIN32)
 endif()
 
 # X11 stuff. It's in a if() so that we can say REQUIRED
-if(UNIX AND NOT APPLE)
+if(APPLE)
   find_package(X11 REQUIRED)
 endif()
 
@@ -228,9 +228,8 @@ endif()
 set(FLTK_SKIP_FLUID TRUE)
 set(FLTK_SKIP_OPENGL TRUE)
 set(FLTK_SKIP_FORMS TRUE)
-find_package(FLTK)
 
-if(UNIX AND NOT APPLE)
+if(APPLE)
   # No proper handling for extra X11 libs that FLTK might need...
   if(X11_Xft_FOUND)
     # Xft headers include references to fontconfig, so we need
@@ -264,7 +263,7 @@ if(ENABLE_GNUTLS)
 endif()
 
 # Check for PAM library
-if(UNIX AND NOT APPLE)
+if(APPLE)
   check_include_files(security/pam_appl.h HAVE_PAM_H)
   set(CMAKE_REQUIRED_LIBRARIES -lpam)
   check_function_exists(pam_start HAVE_PAM_START)
@@ -289,7 +288,7 @@ if(WIN32)
   add_subdirectory(win)
 else()
   # No interest in building x related parts on Apple
-  if(NOT APPLE)
+  if(APPLE)
     add_subdirectory(unix)
   endif()
 endif()
@@ -298,14 +297,11 @@ if(ENABLE_NLS)
   add_subdirectory(po)
 endif()
 
-option(BUILD_VIEWER "Build TigerVNC viewer" ON)
+option(BUILD_VIEWER "Build TigerVNC viewer" OFF)
 if(BUILD_VIEWER)
   add_subdirectory(vncviewer)
   add_subdirectory(media)
 endif()
-
-add_subdirectory(tests)
-
 
 add_subdirectory(release)
 
