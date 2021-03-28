@@ -37,6 +37,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+#define HOST_NAME_MAX _POSIX_HOST_NAME_MAX
+
 extern char **environ;
 
 // PAM service name
