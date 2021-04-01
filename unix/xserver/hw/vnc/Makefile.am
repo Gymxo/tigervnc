@@ -65,7 +65,7 @@ libvnc_la_CPPFLAGS = $(XVNC_CPPFLAGS) -I$(TIGERVNC_SRCDIR)/common -UHAVE_CONFIG_
 	-I$(top_srcdir)/include \
 	${XSERVERLIBS_CFLAGS}
 
-libvnc_la_LDFLAGS = -module -avoid-version -Wl,-z,now
+libvnc_la_LDFLAGS = -module -avoid-version -Wl
 
 libvnc_la_LIBADD = libvnccommon.la $(COMMON_LIBS)
 
