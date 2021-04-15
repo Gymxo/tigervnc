@@ -75,11 +75,11 @@ endif(WIN32)
 
 set(RFB_LIBRARIES ${JPEG_LIBRARIES} ${PIXMAN_LIBRARY} os rdr)
 
-if(APPLE)
-  set(RFB_SOURCES ${RFB_SOURCES} UnixPasswordValidator.cxx
-    UnixPasswordValidator.h pam.c pam.h)
-  set(RFB_LIBRARIES ${RFB_LIBRARIES} ${PAM_LIBS})
-endif()
+
+set(RFB_SOURCES ${RFB_SOURCES} UnixPasswordValidator.cxx
+  UnixPasswordValidator.h pam.c pam.h)
+set(RFB_LIBRARIES ${RFB_LIBRARIES} ${PAM_LIBS})
+
 
 if(GNUTLS_FOUND)
   set(RFB_SOURCES
