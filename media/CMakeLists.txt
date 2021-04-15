@@ -10,7 +10,7 @@ find_program(CONVERT_EXECUTABLE convert)
 if(CONVERT_EXECUTABLE)
   add_custom_target(icons DEPENDS ${ICON_FILES})
 
-  if(UNIX AND NOT APPLE)
+  if(APPLE)
     foreach(SIZE 16 22 24 32 48)
       install(FILES icons/tigervnc_${SIZE}.png
         DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/icons/hicolor/${SIZE}x${SIZE}/apps
